@@ -1,0 +1,119 @@
+https://youtu.be/vZOCJHs5rag?list=PLCKuOXG0bPi205CKoCh2bgcv9oXS6sO3a
+
+
+1.PACKAGE.JSON: vAMOS A REMOVER TODO LO DE JASMINE Y KARMA:Ejecutar ->
+ (npm remove @types/jasmine jasmine-core karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter)
+
+
+2.Configurar Jest en Angular - Gist
+  https://gist.github.com/Klerith/ca4573d13844f53af3ff68846a238fc3
+
+
+3.Ejecucion todas las prueba
+  npm run test:watch
+
+
+4.Ejecucion de prueba especificada
+  W Y LUEGO P
+----------------------------------------------------------------------------------------------------------------------------  
+
+PALABRABRAS CLAVES
+
+
+fixture: deteta cambios, aver la parte de siclo de vida de angular, a disparar cierto efecto.
+         
+          Nos permite sacar el componente que queremos probar
+
+
+
+
+HTMLElement: Este compilado es el que nos permite hacer prueba con el snaShop 
+             o tomar los objetos y hacer muchas cosas con los elementos
+
+
+
+
+
+fixture.detectChanges(): Atualiza los componentes
+
+
+TestBed.inject() : Inyeta servicios
+
+ 
+fixture.nativeElement : Permite acceso directo al DOM
+
+
+jest.spyon():Emite el evento, espia, permite saber con cuantas veces se llamo 
+
+
+btnDelete?.textContent
+
+of: Se mapea cuando retorna un observable 
+
+fixture.debugElemet.query():toma el control de los elementos que tenga dentro la etiqueta.
+
+
+toEqual: cuando sea el componente igual a un objeto
+
+
+MOKEAR objetos
+
+
+-Se crea el objeto y luego se llama en el providers
+
+{provide:ActivatedRoute, useValue: mockActivatedRoute}
+
+----------------------------------------------------------------------------------------------------------------------------
+1.A QUE SE LE HACE PRUEBA
+
+ -Componentes TYpescript
+ -Servicios
+ -Funciones y metodos
+ -componentes que tienen logica y procesos por de bajo
+
+
+
+2.Configuracion inicial del testing module
+
+
+3._test_ datos quemados para no ocupar tanto espacio dentro de la prueba.
+
+
+
+4. beforeEach  -) Definimos lo principal, que vamos a ultilazar en varias pruebas.
+
+
+
+5.Linea 141 a 146 mokeamos el localstorage
+
+6.dialoservice: alerta
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+COMO MOKEAR UNA DEPENDENCIA
+
+ 1.Vemos si hay una inyeccion el constrtor y si el metodo aprobar lo esta implementando
+
+ 2.Analizamos el metodo a probar-> (const initialValue = Number(this.route.snapshot.paramMap.get('initial'));)
+
+ 3. En la prueba importamos la dependencia y finamente importamos la ruta en el AWAIT para compilarlo
+ 
+
+ 4. LUEGO CREAMOS EL MOCK DE ESE OBJETO CON LA PROPIEDADES
+
+
+ 5. finalmente en el lo compilamos en el AWAIT para que ultilice ese valor.-( providers: [{ provide: ActivatedRoute, useValue: mockActivatedRoute }])
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+COMO PROBAR UN SERVICIO HttpClient
+
+ 1.analizamos el metodo -> ( return this.http.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${ id }`);)
+  
+ 2.Importamos el HttpClientModule en la prueba 
+
+ 3.lo importamos en beforeEach/TestBed.configureTestingModule
+
+ 4.Inyetamos servicios
+
+ 5. finalmente se hace la prueba 
